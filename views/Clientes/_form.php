@@ -14,15 +14,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'telefono')->textInput() ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email')->textInput(['email' ,'maxlength' => true]) ?>
 
     <?= $form->field($model, 'domicilio')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'razon')->textInput(['maxlength' => true]) ?>
+    <?= Html::img($model->logo,['width'=>'60px']); ?>
 
-    <?= $form->field($model, 'logo')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'archivo')-> fileInput() ?>
 
-    <?= $form->field($model, 'fechaAlta')->textInput() ?>
+    <?= $form->field($model, 'fechaAlta')->input('date') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

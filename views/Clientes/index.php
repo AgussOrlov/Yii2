@@ -7,12 +7,13 @@ use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var app\models\ClienteSearch $searchModel */
+/** @var app\models\ClientesSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Clientes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<style>body{background-color: #46687D;} </style>
 <div class="clientes-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -34,13 +35,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             'domicilio',
             'razon',
-            //'logo',
-            //'fechaAlta',
+            [
+                'format'=>'html',
+                'value' =>function($data){return Html::img($data->logo,['width'=>'60px']);},
+            ],
+            'fechaAlta',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Clientes $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'idCli' => $model->idCli]);
-                 }
+                }
             ],
         ],
     ]); ?>

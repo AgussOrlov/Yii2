@@ -17,6 +17,7 @@ use Yii;
  */
 class Clientes extends \yii\db\ActiveRecord
 {
+    public $archivo;
     /**
      * {@inheritdoc}
      */
@@ -31,12 +32,12 @@ class Clientes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['telefono', 'email', 'domicilio', 'razon', 'logo', 'fechaAlta'], 'required'],
+            [['telefono', 'email', 'domicilio', 'razon', 'fechaAlta'], 'required'],
             [['telefono'], 'integer'],
             [['fechaAlta'], 'safe'],
             [['email'], 'string', 'max' => 255],
             [['domicilio', 'razon'], 'string', 'max' => 400],
-            [['logo'], 'string', 'max' => 3000],
+            [['archivo'],'file', 'extensions'=>'jpg,png'],
         ];
     }
 
@@ -51,7 +52,7 @@ class Clientes extends \yii\db\ActiveRecord
             'email' => 'Email',
             'domicilio' => 'Domicilio',
             'razon' => 'Razon',
-            'logo' => 'Logo',
+            'archivo' => 'Logo',
             'fechaAlta' => 'Fecha Alta',
         ];
     }

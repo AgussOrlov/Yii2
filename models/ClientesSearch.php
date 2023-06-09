@@ -9,7 +9,7 @@ use app\models\Clientes;
 /**
  * ClienteSearch represents the model behind the search form of `app\models\Clientes`.
  */
-class ClienteSearch extends Clientes
+class ClientesSearch extends Clientes
 {
     /**
      * {@inheritdoc}
@@ -46,6 +46,7 @@ class ClienteSearch extends Clientes
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination'=>['pageSize'=>4],
         ]);
 
         $this->load($params);

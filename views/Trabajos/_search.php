@@ -4,30 +4,24 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var app\models\ClientesSearch $model */
+/** @var app\models\TrabajosSearch $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="clientes-search">
+<div class="trabajos-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'idCli') ?>
+    <?= $form->field($model, 'idtrabajos') ?>
 
-    <?= $form->field($model, 'telefono') ?>
+    <?= $form->field($model, 'fechaI') ?>
 
-    <?= $form->field($model, 'email') ?>
+    <?= $form->field($model, 'fechaF') ?>
 
-    <?= $form->field($model, 'domicilio') ?>
-
-    <?= $form->field($model, 'razon') ?>
-
-    <?= $form->field($model, 'logo') ?>
-
-    <?=   $form->field($model, 'fechaAlta') ?>
+    <?= $form->field($model, 'descripcion') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

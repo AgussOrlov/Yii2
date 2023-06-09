@@ -31,6 +31,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
 <header id="header">
     <?php
+
+    
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
@@ -48,7 +50,15 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             (! Yii::$app->user->isGuest )?( 
             ['label' => 'Contact', 'url' => ['/site/contact']]
             ):(""),
-            ['label' => 'Cuentas', 'url' => ['/site/signup']],
+            (! Yii::$app->user->isGuest )?( 
+            ['label' => 'Clientes', 'url' => ['/clientes/index']]
+            ):(""),
+            (! Yii::$app->user->isGuest )?( 
+            ['label' => 'Trabajos', 'url' => ['/trabajos/index']]
+            ):(""),
+            (Yii::$app->user->isGuest )?(
+            ['label' => 'Registrar', 'url' => ['/site/signup']]
+            ):(""),
             Yii::$app->user->isGuest
                 ? ['label' => 'Login', 'url' => ['/site/login']]
                 : '<li class="nav-item">'
@@ -62,8 +72,14 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         ]
     ]);
     NavBar::end();
+
+    
     ?>
+    <?php if (Yii::$app->user->isGuest): ?>
+    <li><?= Html::a('Registrar', ['/site/signup']) ?></li>
+<?php endif; ?>p
 </header>
+
 
 <main id="main" class="flex-shrink-0" role="main">
     <div class="container">

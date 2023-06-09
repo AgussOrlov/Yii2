@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\Clientes;
-use app\models\ClienteSearch;
+use app\models\Trabajos;
+use app\models\TrabajosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ClienteController implements the CRUD actions for Clientes model.
+ * TrabajosController implements the CRUD actions for Trabajos model.
  */
-class ClienteController extends Controller
+class TrabajosController extends Controller
 {
     /**
      * @inheritDoc
@@ -28,17 +28,18 @@ class ClienteController extends Controller
                     ],
                 ],
             ]
+            
         );
     }
 
     /**
-     * Lists all Clientes models.
+     * Lists all Trabajos models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new ClienteSearch();
+        $searchModel = new TrabajosSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,30 +49,30 @@ class ClienteController extends Controller
     }
 
     /**
-     * Displays a single Clientes model.
-     * @param int $idCli Id Cli
+     * Displays a single Trabajos model.
+     * @param int $idtrabajos Idtrabajos
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($idCli)
+    public function actionView($idtrabajos)
     {
         return $this->render('view', [
-            'model' => $this->findModel($idCli),
+            'model' => $this->findModel($idtrabajos),
         ]);
     }
 
     /**
-     * Creates a new Clientes model.
+     * Creates a new Trabajos model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Clientes();
+        $model = new Trabajos();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'idCli' => $model->idCli]);
+                return $this->redirect(['view', 'idtrabajos' => $model->idtrabajos]);
             }
         } else {
             $model->loadDefaultValues();
@@ -83,18 +84,18 @@ class ClienteController extends Controller
     }
 
     /**
-     * Updates an existing Clientes model.
+     * Updates an existing Trabajos model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $idCli Id Cli
+     * @param int $idtrabajos Idtrabajos
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($idCli)
+    public function actionUpdate($idtrabajos)
     {
-        $model = $this->findModel($idCli);
+        $model = $this->findModel($idtrabajos);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'idCli' => $model->idCli]);
+            return $this->redirect(['view', 'idtrabajos' => $model->idtrabajos]);
         }
 
         return $this->render('update', [
@@ -103,29 +104,29 @@ class ClienteController extends Controller
     }
 
     /**
-     * Deletes an existing Clientes model.
+     * Deletes an existing Trabajos model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $idCli Id Cli
+     * @param int $idtrabajos Idtrabajos
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($idCli)
+    public function actionDelete($idtrabajos)
     {
-        $this->findModel($idCli)->delete();
+        $this->findModel($idtrabajos)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Clientes model based on its primary key value.
+     * Finds the Trabajos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $idCli Id Cli
-     * @return Clientes the loaded model
+     * @param int $idtrabajos Idtrabajos
+     * @return Trabajos the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($idCli)
+    protected function findModel($idtrabajos)
     {
-        if (($model = Clientes::findOne(['idCli' => $idCli])) !== null) {
+        if (($model = Trabajos::findOne(['idtrabajos' => $idtrabajos])) !== null) {
             return $model;
         }
 
